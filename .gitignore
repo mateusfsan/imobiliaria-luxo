@@ -1,0 +1,27 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependencias
+node_modules/
+
+# Builds
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Variaveis de ambiente (placeholders ficam em .env.example)
+.env
+.env.local
+
+# Coleções do Postman com credenciais
+postman/
