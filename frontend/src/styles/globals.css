@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-bg text-ink-primary font-sans antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif font-light;
+  }
+
+  ::selection {
+    @apply bg-gold/30 text-ink-primary;
+  }
+}
+
+@layer components {
+  .container-luxe {
+    @apply max-w-container mx-auto px-6 sm:px-10;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center px-7 py-3 text-sm tracking-wider uppercase
+           border border-gold text-gold bg-transparent
+           transition-colors duration-300 ease-silk
+           hover:bg-gold hover:text-black focus:outline-none focus:ring-1 focus:ring-gold/60;
+  }
+
+  .input-line {
+    @apply w-full bg-transparent text-ink-primary placeholder:text-ink-secondary/60
+           border-0 border-b border-white/20 focus:border-gold
+           py-3 px-0 outline-none transition-colors duration-300 ease-silk;
+  }
+
+  .label-eyebrow {
+    @apply text-label uppercase text-ink-secondary;
+  }
+}
