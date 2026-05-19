@@ -23,11 +23,49 @@ export async function create(userId, { propertyId, date, notes }) {
     throw new HttpError(400, 'DATE_TOO_SOON', 'A visita precisa ser marcada com pelo menos 1 hora de antecedencia');
   }
 
+  const existing = await Schedule.findOne({
+    property: propertyId,
+    status: { $ne: 'cancelled' },
+    date: when,
+  }).lean();
+  if (existing) {
+    throw new HttpError(409, 'SLOT_TAKEN', 'Esse horario ja foi reservado por outro cliente');
+  }
+
   return Schedule.create({
     user: userId,
     property: propertyId,
     date: when,
     notes,
+  });
+}
+
+export async function getBookedTimes(propertyId, dateStr) {
+  assertValidId(propertyId);
+
+  const date = new Date(dateStr);
+  if (Number.isNaN(date.getTime())) {
+    throw new HttpError(400, 'INVALID_DATE', 'Data invalida');
+  }
+
+  const start = new Date(date);
+  start.setHours(0, 0, 0, 0);
+  const end = new Date(date);
+  end.setHours(23, 59, 59, 999);
+
+  const schedules = await Schedule.find({
+    property: propertyId,
+    status: { $ne: 'cancelled' },
+    date: { $gte: start, $lte: end },
+  })
+    .select('date')
+    .lean();
+
+  return schedules.map((s) => {
+    const d = new Date(s.date);
+    const h = String(d.getHours()).padStart(2, '0');
+    const m = String(d.getMinutes()).padStart(2, '0');
+    return `${h}:${m}`;
   });
 }
 
@@ -42,28 +80,52 @@ export async function listAll() {
   return Schedule.find()
     .populate('property', 'title city state price')
     .populate('user', 'name email')
-    .sort({ date: 1 })
+    .sort({ createdAt: 1 })
     .lean();
 }
 
 export async function cancelOwn(userId, scheduleId) {
   assertValidId(scheduleId);
-  const schedule = await Schedule.findOne({ _id: scheduleId, user: userId });
+  const schedule = await Schedule.findOneAndUpdate(
+    { _id: scheduleId, user: userId },
+    { status: 'cancelled' },
+    { new: true }
+  ).populate('property', 'title city state images price');
   if (!schedule) throw new HttpError(404, 'SCHEDULE_NOT_FOUND', 'Agendamento nao encontrado');
-  if (schedule.status === 'cancelled') return schedule;
-
-  schedule.status = 'cancelled';
-  await schedule.save();
   return schedule;
 }
 
 export async function updateStatus(scheduleId, status) {
   assertValidId(scheduleId);
+
+  if (status === 'confirmed') {
+    const current = await Schedule.findById(scheduleId).select('property date status').lean();
+    if (!current) throw new HttpError(404, 'SCHEDULE_NOT_FOUND', 'Agendamento nao encontrado');
+
+    if (current.status !== 'confirmed') {
+      const conflict = await Schedule.findOne({
+        _id: { $ne: scheduleId },
+        property: current.property,
+        date: current.date,
+        status: 'confirmed',
+      }).lean();
+      if (conflict) {
+        throw new HttpError(
+          409,
+          'SLOT_TAKEN',
+          'Ja existe uma visita confirmada para este imovel neste horario'
+        );
+      }
+    }
+  }
+
   const schedule = await Schedule.findByIdAndUpdate(
     scheduleId,
     { status },
     { new: true, runValidators: true }
-  );
+  )
+    .populate('property', 'title city state price')
+    .populate('user', 'name email');
   if (!schedule) throw new HttpError(404, 'SCHEDULE_NOT_FOUND', 'Agendamento nao encontrado');
   return schedule;
 }

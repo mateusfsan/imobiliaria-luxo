@@ -27,6 +27,21 @@ export async function listAll(req, res, next) {
   }
 }
 
+export async function bookedTimes(req, res, next) {
+  try {
+    const { propertyId, date } = req.query;
+    if (!propertyId || !date) {
+      return res.status(400).json({
+        error: { code: 'MISSING_PARAMS', message: 'propertyId e date sao obrigatorios' },
+      });
+    }
+    const times = await scheduleService.getBookedTimes(propertyId, date);
+    res.json({ times });
+  } catch (err) {
+    next(err);
+  }
+}
+
 export async function cancel(req, res, next) {
   try {
     const schedule = await scheduleService.cancelOwn(req.user.id, req.params.id);

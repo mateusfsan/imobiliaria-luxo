@@ -20,6 +20,7 @@ scheduleRoutes.use(requireAuth);
 
 scheduleRoutes.post('/', validate(createSchema), scheduleController.create);
 scheduleRoutes.get('/', scheduleController.listMine);
+scheduleRoutes.get('/booked-times', scheduleController.bookedTimes);
 scheduleRoutes.delete('/:id', scheduleController.cancel);
 
 scheduleRoutes.get('/admin', requireAdmin, scheduleController.listAll);
