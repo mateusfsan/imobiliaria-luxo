@@ -8,7 +8,7 @@ import {
 
 const STATUS_LABELS = {
   pending: { label: 'Pendente', tone: 'text-ink-primary border-subtle' },
-  confirmed: { label: 'Confirmada', tone: 'text-gold border-gold' },
+  confirmed: { label: 'Confirmada', tone: 'text-black bg-gold border-gold' },
   cancelled: { label: 'Cancelada', tone: 'text-ink-secondary line-through border-subtle' },
 };
 
@@ -18,6 +18,15 @@ const FILTERS = [
   { key: 'confirmed', label: 'Confirmadas' },
   { key: 'cancelled', label: 'Canceladas' },
 ];
+
+function fmtRequestDate(date) {
+  const d = new Date(date);
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const hour = String(d.getHours()).padStart(2, '0');
+  const minute = String(d.getMinutes()).padStart(2, '0');
+  return `${day}/${month} as ${hour}:${minute}`;
+}
 
 const fmtDate = new Intl.DateTimeFormat('pt-BR', {
   day: '2-digit',
@@ -143,8 +152,13 @@ export default function AdminSchedules() {
                 </div>
 
                 <div className="sm:col-span-4">
-                  <p className="label-eyebrow text-ink-secondary mb-1">Data</p>
+                  <p className="label-eyebrow text-ink-secondary mb-1">Data da visita</p>
                   <p className="text-sm">{fmtDate.format(new Date(schedule.date))}</p>
+                  {schedule.createdAt && (
+                    <p className="mt-2 text-xs text-ink-secondary/60">
+                      Solicitado em {fmtRequestDate(schedule.createdAt)}
+                    </p>
+                  )}
                   {schedule.notes && (
                     <p className="mt-3 text-xs text-ink-secondary leading-relaxed">
                       {schedule.notes}
