@@ -5,6 +5,8 @@ import { connectDB } from './src/config/db.js';
 import { errorHandler } from './src/middlewares/errorHandler.js';
 import { authRoutes } from './src/routes/auth.js';
 import { propertyRoutes } from './src/routes/properties.js';
+import { favoriteRoutes } from './src/routes/favorites.js';
+import { scheduleRoutes } from './src/routes/schedule.js';
 
 const app = express();
 
@@ -17,6 +19,8 @@ app.get('/api/health', (req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/properties', propertyRoutes);
+app.use('/api/favorites', favoriteRoutes);
+app.use('/api/schedule', scheduleRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ error: { code: 'NOT_FOUND', message: 'Rota nao encontrada' } });
