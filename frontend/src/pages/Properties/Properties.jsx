@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useSearchParams } from 'react-router-dom';
 import { useProperties } from '../../hooks/useProperties.js';
@@ -6,6 +6,7 @@ import PropertyCard from '../../components/property/PropertyCard.jsx';
 import FiltersDrawer from './FiltersDrawer.jsx';
 
 const FILTER_KEYS = ['city', 'state', 'bedrooms', 'priceMin', 'priceMax', 'sort'];
+const LAST_FILTERS_KEY = 'imobiliaria:lastFilters';
 
 function paramsToObject(searchParams) {
   const obj = {};
@@ -20,6 +21,10 @@ export default function Properties() {
   const [searchParams, setSearchParams] = useSearchParams();
   const filters = useMemo(() => paramsToObject(searchParams), [searchParams]);
   const [drawerOpen, setDrawerOpen] = useState(false);
+
+  useEffect(() => {
+    sessionStorage.setItem(LAST_FILTERS_KEY, JSON.stringify(filters));
+  }, [filters]);
 
   const { data, loading } = useProperties(filters);
 

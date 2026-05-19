@@ -5,6 +5,7 @@ import { useProperty } from '../../hooks/useProperties.js';
 import { formatPrice, formatArea } from '../../utils/format.js';
 import Gallery from './Gallery.jsx';
 import FavoriteButton from '../../components/property/FavoriteButton.jsx';
+import RelatedProperties from '../../components/property/RelatedProperties.jsx';
 
 function InfoCell({ label, value }) {
   return (
@@ -108,6 +109,8 @@ export default function PropertyDetails() {
             </div>
           </aside>
         </section>
+
+        <RelatedProperties currentId={data._id} />
       </article>
     </>
   );
