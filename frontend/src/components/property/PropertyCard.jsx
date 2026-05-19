@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { formatPrice } from '../../utils/format.js';
+import FavoriteButton from './FavoriteButton.jsx';
 
 export default function PropertyCard({ property, index = 0 }) {
   const cover = property.images?.[0]?.url;
@@ -11,8 +12,12 @@ export default function PropertyCard({ property, index = 0 }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.9, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
-      className="group"
+      className="group relative"
     >
+      <div className="absolute top-5 right-5 z-10">
+        <FavoriteButton propertyId={property._id} />
+      </div>
+
       <Link to={`/imoveis/${property._id}`} className="block">
         <div className="relative aspect-[4/5] overflow-hidden bg-card">
           {cover ? (

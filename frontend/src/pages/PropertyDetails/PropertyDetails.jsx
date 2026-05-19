@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useProperty } from '../../hooks/useProperties.js';
 import { formatPrice, formatArea } from '../../utils/format.js';
 import Gallery from './Gallery.jsx';
+import FavoriteButton from '../../components/property/FavoriteButton.jsx';
 
 function InfoCell({ label, value }) {
   return (
@@ -48,23 +49,26 @@ export default function PropertyDetails() {
       </Helmet>
 
       <article className="pt-28">
-        <header className="container-luxe pb-12">
-          <motion.p
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="label-eyebrow text-gold mb-4"
-          >
-            {data.city} &middot; {data.state}
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif text-h1 max-w-4xl leading-tight"
-          >
-            {data.title}
-          </motion.h1>
+        <header className="container-luxe pb-12 flex items-end justify-between gap-8">
+          <div>
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="label-eyebrow text-gold mb-4"
+            >
+              {data.city} &middot; {data.state}
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="font-serif text-h1 max-w-4xl leading-tight"
+            >
+              {data.title}
+            </motion.h1>
+          </div>
+          <FavoriteButton propertyId={data._id} size="lg" label className="shrink-0" />
         </header>
 
         <div className="container-luxe">
