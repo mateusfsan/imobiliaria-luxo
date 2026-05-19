@@ -24,3 +24,10 @@ export async function updateScheduleStatus(id, status) {
   const { data } = await api.patch(`/schedule/${id}/status`, { status });
   return data;
 }
+
+export async function getBookedTimes(propertyId, date) {
+  const { data } = await api.get('/schedule/booked-times', {
+    params: { propertyId, date },
+  });
+  return data.times;
+}
