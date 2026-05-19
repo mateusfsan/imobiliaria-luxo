@@ -2,6 +2,8 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/layout/Navbar.jsx';
 import Footer from './components/layout/Footer.jsx';
 import RequireAuth from './components/layout/RequireAuth.jsx';
+import RequireAdmin from './components/layout/RequireAdmin.jsx';
+import AdminLayout from './components/admin/AdminLayout.jsx';
 import Home from './pages/Home/Home.jsx';
 import Properties from './pages/Properties/Properties.jsx';
 import PropertyDetails from './pages/PropertyDetails/PropertyDetails.jsx';
@@ -10,17 +12,23 @@ import Schedule from './pages/Schedule/Schedule.jsx';
 import MyVisits from './pages/MyVisits/MyVisits.jsx';
 import Login from './pages/Auth/Login.jsx';
 import Register from './pages/Auth/Register.jsx';
+import AdminDashboard from './pages/Admin/Dashboard.jsx';
+import AdminProperties from './pages/Admin/Properties.jsx';
+import AdminPropertyForm from './pages/Admin/PropertyForm.jsx';
+import AdminSchedules from './pages/Admin/Schedules.jsx';
 import { useAuthSync } from './hooks/useAuthSync.js';
 
 export default function App() {
   const { pathname } = useLocation();
   const isAuthPage = pathname === '/entrar' || pathname === '/cadastro';
+  const isAdminPage = pathname.startsWith('/admin');
+  const showChrome = !isAuthPage && !isAdminPage;
 
   useAuthSync();
 
   return (
     <div className="min-h-screen flex flex-col">
-      {!isAuthPage && <Navbar />}
+      {showChrome && <Navbar />}
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -28,6 +36,7 @@ export default function App() {
           <Route path="/imoveis/:id" element={<PropertyDetails />} />
           <Route path="/entrar" element={<Login />} />
           <Route path="/cadastro" element={<Register />} />
+
           <Route
             path="/favoritos"
             element={
@@ -52,6 +61,22 @@ export default function App() {
               </RequireAuth>
             }
           />
+
+          <Route
+            path="/admin"
+            element={
+              <RequireAdmin>
+                <AdminLayout />
+              </RequireAdmin>
+            }
+          >
+            <Route index element={<AdminDashboard />} />
+            <Route path="imoveis" element={<AdminProperties />} />
+            <Route path="imoveis/novo" element={<AdminPropertyForm />} />
+            <Route path="imoveis/:id/editar" element={<AdminPropertyForm />} />
+            <Route path="visitas" element={<AdminSchedules />} />
+          </Route>
+
           <Route
             path="*"
             element={
@@ -62,7 +87,7 @@ export default function App() {
           />
         </Routes>
       </main>
-      {!isAuthPage && <Footer />}
+      {showChrome && <Footer />}
     </div>
   );
 }

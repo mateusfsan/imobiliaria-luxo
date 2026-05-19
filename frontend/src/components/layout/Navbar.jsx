@@ -95,10 +95,19 @@ export default function Navbar() {
                     role="menu"
                     className="absolute right-0 top-full mt-3 w-56 bg-surface border border-subtle"
                   >
+                    {user.role === 'admin' && (
+                      <Link
+                        to="/admin"
+                        onClick={() => setMenuOpen(false)}
+                        className="block px-6 py-4 text-sm uppercase tracking-wider text-gold hover:bg-card transition-colors"
+                      >
+                        Painel admin
+                      </Link>
+                    )}
                     <Link
                       to="/favoritos"
                       onClick={() => setMenuOpen(false)}
-                      className="block px-6 py-4 text-sm uppercase tracking-wider text-ink-secondary hover:text-gold hover:bg-card transition-colors"
+                      className={`block px-6 py-4 text-sm uppercase tracking-wider text-ink-secondary hover:text-gold hover:bg-card transition-colors ${user.role === 'admin' ? 'border-t border-subtle' : ''}`}
                     >
                       Minhas residencias
                     </Link>
