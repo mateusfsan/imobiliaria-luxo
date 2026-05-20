@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useSearchParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useProperties } from '../../hooks/useProperties.js';
 import PropertyCard from '../../components/property/PropertyCard.jsx';
 import FiltersDrawer from './FiltersDrawer.jsx';
@@ -41,19 +42,56 @@ export default function Properties() {
   return (
     <>
       <Helmet>
-        <title>Residencias &middot; Portfolio</title>
-        <meta name="description" content="Portfolio completo de residencias de alto padrao." />
+        <title>Residências · Portfólio</title>
+        <meta name="description" content="Portfólio completo de residências de alto padrão." />
       </Helmet>
 
-      <section className="pt-32 pb-section">
-        <div className="container-luxe">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+      <section className="relative h-[70vh] min-h-[480px] w-full overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2400&q=80')",
+          }}
+          aria-hidden
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-bg" aria-hidden />
+
+        <div className="relative h-full container-luxe flex flex-col items-center justify-center text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="label-eyebrow text-gold mb-6"
+          >
+            Portfólio
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="font-serif text-display max-w-3xl text-ink-primary"
+          >
+            O portfólio completo
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.35 }}
+            className="mt-6 max-w-xl text-ink-secondary"
+          >
+            Residências singulares selecionadas para quem busca o extraordinário.
+          </motion.p>
+        </div>
+      </section>
+
+      <section className="pb-section">
+        <div className="container-luxe pt-section-sm md:pt-section">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-16">
             <div>
-              <p className="label-eyebrow mb-4">Portfolio</p>
-              <h1 className="font-serif text-h1">Residencias selecionadas</h1>
               {!loading && data && (
-                <p className="mt-4 text-ink-secondary text-sm">
-                  {data.total} {data.total === 1 ? 'imovel' : 'imoveis'} encontrados
+                <p className="text-ink-secondary text-sm">
+                  {data.total} {data.total === 1 ? 'imóvel encontrado' : 'imóveis encontrados'}
                 </p>
               )}
             </div>
@@ -91,7 +129,7 @@ export default function Properties() {
           {!loading && data?.items?.length === 0 && (
             <div className="py-32 text-center">
               <p className="text-ink-secondary mb-6">
-                Nenhum imovel corresponde aos filtros selecionados.
+                Nenhum imóvel corresponde aos filtros selecionados.
               </p>
               <button
                 onClick={() => updateFilters({})}
