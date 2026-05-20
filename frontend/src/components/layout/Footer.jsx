@@ -4,10 +4,10 @@ export default function Footer() {
       <div className="container-luxe py-16 grid gap-12 md:grid-cols-3">
         <div>
           <div className="font-serif text-xl">
-            Residencias<span className="text-gold">.</span>
+            Residências<span className="text-gold">.</span>
           </div>
           <p className="mt-4 text-sm text-ink-secondary leading-relaxed">
-            Curadoria de residencias extraordinarias. Discricao, sofisticacao e exclusividade.
+            Curadoria de residências extraordinárias. Discrição, sofisticação e exclusividade.
           </p>
         </div>
 
@@ -28,7 +28,7 @@ export default function Footer() {
       </div>
       <div className="border-t border-subtle">
         <div className="container-luxe py-6 text-xs text-ink-secondary/70 tracking-wider uppercase">
-          &copy; {new Date().getFullYear()} Residencias. Todos os direitos reservados.
+          &copy; {new Date().getFullYear()} Residências. Todos os direitos reservados.
         </div>
       </div>
     </footer>

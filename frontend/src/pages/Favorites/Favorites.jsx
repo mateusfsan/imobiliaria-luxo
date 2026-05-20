@@ -27,17 +27,17 @@ export default function Favorites() {
   return (
     <>
       <Helmet>
-        <title>Minhas residencias &middot; Favoritos</title>
+        <title>Minhas residências &middot; Favoritos</title>
       </Helmet>
 
       <section className="pt-32 pb-section">
         <div className="container-luxe">
           <div className="mb-16">
-            <p className="label-eyebrow mb-4">Sua selecao</p>
-            <h1 className="font-serif text-h1">Minhas residencias</h1>
+            <p className="label-eyebrow mb-4">Sua seleção</p>
+            <h1 className="font-serif text-h1">Minhas residências</h1>
             {visible && (
               <p className="mt-4 text-ink-secondary text-sm">
-                {visible.length} {visible.length === 1 ? 'imovel salvo' : 'imoveis salvos'}
+                {visible.length} {visible.length === 1 ? 'imóvel salvo' : 'imóveis salvos'}
               </p>
             )}
           </div>
@@ -61,10 +61,10 @@ export default function Favorites() {
           {!loading && visible?.length === 0 && (
             <div className="py-32 text-center">
               <p className="text-ink-secondary mb-6">
-                Voce ainda nao salvou nenhuma residencia.
+                Você ainda não salvou nenhuma residência.
               </p>
               <Link to="/imoveis" className="btn-gold">
-                Explorar portfolio
+                Explorar portfólio
               </Link>
             </div>
           )}

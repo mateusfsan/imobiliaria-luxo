@@ -8,9 +8,9 @@ const img = (url) => ({ url, publicId: `seed:${url}` });
 
 const properties = [
   {
-    title: 'Cobertura duplex com vista para o Jardim Botanico',
+    title: 'Cobertura duplex com vista para o Jardim Botânico',
     description:
-      'Cobertura duplex de arquitetura autoral, com pe-direito triplo na sala, piscina privativa com borda infinita e vista panoramica para a Mata Atlantica. Acabamentos em marmore Calacatta e madeira freijo. Suite master com closet e hidromassagem.',
+      'Cobertura duplex de arquitetura autoral, com pé-direito triplo na sala, piscina privativa com borda infinita e vista panorâmica para a Mata Atlântica. Acabamentos em mármore Calacatta e madeira freijó. Suíte master com closet e hidromassagem.',
     price: 28500000,
     city: 'Rio de Janeiro',
     state: 'RJ',
@@ -27,9 +27,9 @@ const properties = [
     ],
   },
   {
-    title: 'Casa contemporanea em condominio fechado, Alphaville',
+    title: 'Casa contemporânea em condomínio fechado, Alphaville',
     description:
-      'Projeto assinado, integracao total com area externa, jardim paisagistico e spa privativo. Sistema de automacao residencial completo, adega climatizada e home theater.',
+      'Projeto assinado, integração total com área externa, jardim paisagístico e spa privativo. Sistema de automação residencial completo, adega climatizada e home theater.',
     price: 16800000,
     city: 'Barueri',
     state: 'SP',
@@ -48,7 +48,7 @@ const properties = [
   {
     title: 'Apartamento garden no Itaim Bibi',
     description:
-      'Apartamento garden em edificio boutique, com 320m2 e 200m2 de jardim privativo. Living amplo, cozinha gourmet integrada e tres suites com varandas individuais.',
+      'Apartamento garden em edifício boutique, com 320m2 e 200m2 de jardim privativo. Living amplo, cozinha gourmet integrada e três suítes com varandas individuais.',
     price: 12400000,
     city: 'Sao Paulo',
     state: 'SP',
@@ -64,9 +64,9 @@ const properties = [
     ],
   },
   {
-    title: 'Mansao a beira-mar na Praia de Geriba',
+    title: 'Mansão à beira-mar na Praia de Geribá',
     description:
-      'Residencia de praia com acesso direto a areia, arquitetura mediterranea, piscina aquecida com vista para o oceano e ancoradouro privativo. Ideal para verao em familia.',
+      'Residência de praia com acesso direto à areia, arquitetura mediterrânea, piscina aquecida com vista para o oceano e ancoradouro privativo. Ideal para verão em família.',
     price: 42000000,
     city: 'Armacao dos Buzios',
     state: 'RJ',
@@ -84,7 +84,7 @@ const properties = [
   {
     title: 'Loft industrial em Pinheiros',
     description:
-      'Loft de 180m2 em edificio convertido, pe-direito de 5 metros, mezanino com escritorio e janelas pivotantes do piso ao teto. Acabamento bruto sofisticado.',
+      'Loft de 180m2 em edifício convertido, pé-direito de 5 metros, mezanino com escritório e janelas pivotantes do piso ao teto. Acabamento bruto sofisticado.',
     price: 4800000,
     city: 'Sao Paulo',
     state: 'SP',
@@ -102,7 +102,7 @@ const properties = [
   {
     title: 'Casa de campo em Itaipava com haras',
     description:
-      'Propriedade rural de 12 hectares com casa principal, casa de hospedes, lago artificial e haras com seis baias. Vegetacao nativa preservada e nascentes prorpias.',
+      'Propriedade rural de 12 hectares com casa principal, casa de hóspedes, lago artificial e haras com seis baias. Vegetação nativa preservada e nascentes próprias.',
     price: 9600000,
     city: 'Petropolis',
     state: 'RJ',
@@ -118,9 +118,9 @@ const properties = [
     ],
   },
   {
-    title: 'Penthouse em Brooklin com terraco panoramico',
+    title: 'Penthouse em Brooklin com terraço panorâmico',
     description:
-      'Penthouse triplex com 480m2, terraco de 220m2 com piscina e ofuro japones. Vista 360 da cidade. Tres vagas privativas e elevador exclusivo.',
+      'Penthouse triplex com 480m2, terraço de 220m2 com piscina e ofurô japonês. Vista 360 da cidade. Três vagas privativas e elevador exclusivo.',
     price: 19500000,
     city: 'Sao Paulo',
     state: 'SP',
@@ -138,7 +138,7 @@ const properties = [
   {
     title: 'Casa minimalista em Trancoso',
     description:
-      'Casa de 5 suites projetada em torno de um quintal central com piscina. Materiais locais, telhado de palha e integracao total com a vegetacao nativa baiana.',
+      'Casa de 5 suítes projetada em torno de um quintal central com piscina. Materiais locais, telhado de palha e integração total com a vegetação nativa baiana.',
     price: 11200000,
     city: 'Porto Seguro',
     state: 'BA',

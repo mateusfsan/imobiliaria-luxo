@@ -10,8 +10,8 @@ import { useAuthStore } from '../../store/authStore.js';
 
 const schema = z.object({
   name: z.string().min(2, 'Nome muito curto'),
-  email: z.string().email('E-mail invalido'),
-  password: z.string().min(8, 'Minimo 8 caracteres'),
+  email: z.string().email('E-mail inválido'),
+  password: z.string().min(8, 'Mínimo 8 caracteres'),
 });
 
 export default function Register() {
@@ -32,14 +32,14 @@ export default function Register() {
       setSession(user, token);
       navigate('/', { replace: true });
     } catch (err) {
-      setServerError(err.response?.data?.error?.message || 'Nao foi possivel cadastrar');
+      setServerError(err.response?.data?.error?.message || 'Não foi possível cadastrar');
     }
   };
 
   return (
     <>
       <Helmet>
-        <title>Cadastro &middot; Residencias</title>
+        <title>Cadastro &middot; Residências</title>
       </Helmet>
       <div className="min-h-screen flex items-center justify-center px-6 py-24">
         <motion.div
@@ -79,7 +79,7 @@ export default function Register() {
             </button>
 
             <p className="text-center text-sm text-ink-secondary">
-              Ja tem conta?{' '}
+              Já tem conta?{' '}
               <Link to="/entrar" className="text-gold hover:text-gold-hover transition-colors">
                 Entrar
               </Link>

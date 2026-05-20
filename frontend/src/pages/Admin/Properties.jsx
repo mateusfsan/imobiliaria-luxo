@@ -23,7 +23,7 @@ export default function AdminProperties() {
   }, []);
 
   const handleDelete = async (property) => {
-    const ok = window.confirm(`Remover "${property.title}"? Esta acao nao pode ser desfeita.`);
+    const ok = window.confirm(`Remover "${property.title}"? Esta ação não pode ser desfeita.`);
     if (!ok) return;
     setError(null);
     setDeletingId(property._id);
@@ -35,7 +35,7 @@ export default function AdminProperties() {
         total: prev.total - 1,
       }));
     } catch (err) {
-      setError(err.response?.data?.error?.message || 'Falha ao remover imovel');
+      setError(err.response?.data?.error?.message || 'Falha ao remover imóvel');
     } finally {
       setDeletingId(null);
     }
@@ -44,21 +44,21 @@ export default function AdminProperties() {
   return (
     <>
       <Helmet>
-        <title>Admin &middot; Imoveis</title>
+        <title>Admin &middot; Imóveis</title>
       </Helmet>
 
       <header className="mb-12 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
         <div>
-          <p className="label-eyebrow text-ink-secondary mb-4">Portfolio</p>
-          <h1 className="font-serif text-h1">Imoveis</h1>
+          <p className="label-eyebrow text-ink-secondary mb-4">Portfólio</p>
+          <h1 className="font-serif text-h1">Imóveis</h1>
           {data && (
             <p className="mt-3 text-sm text-ink-secondary">
-              {data.total} {data.total === 1 ? 'imovel cadastrado' : 'imoveis cadastrados'}
+              {data.total} {data.total === 1 ? 'imóvel cadastrado' : 'imóveis cadastrados'}
             </p>
           )}
         </div>
         <Link to="/admin/imoveis/novo" className="btn-gold self-start">
-          Adicionar imovel
+          Adicionar imóvel
         </Link>
       </header>
 
@@ -128,9 +128,9 @@ export default function AdminProperties() {
 
       {!loading && data?.items?.length === 0 && (
         <div className="py-24 text-center border border-subtle">
-          <p className="text-ink-secondary mb-6">Nenhum imovel cadastrado ainda.</p>
+          <p className="text-ink-secondary mb-6">Nenhum imóvel cadastrado ainda.</p>
           <Link to="/admin/imoveis/novo" className="btn-gold">
-            Adicionar primeiro imovel
+            Adicionar primeiro imóvel
           </Link>
         </div>
       )}

@@ -1,4 +1,4 @@
-# Residências — Plataforma Imobiliária de Alto Padrão
+# Residências · Plataforma Imobiliária de Alto Padrão
 
 > Curadoria digital de residências extraordinárias. Uma plataforma inspirada na Sotheby's Realty e na Airbnb Luxe, construída do zero com foco em **minimalismo extremo**, **tipografia editorial** e **experiência silenciosa**.
 
@@ -24,12 +24,12 @@
 
 ## Visão do produto
 
-Esta não é uma plataforma genérica de imóveis. É uma **curadoria** — cada residência é selecionada manualmente por critérios de arquitetura, localização, acabamentos e história. O posicionamento e o design refletem isso:
+Esta não é uma plataforma genérica de imóveis. É uma **curadoria**: cada residência é selecionada manualmente por critérios de arquitetura, localização, acabamentos e história. O posicionamento e o design refletem isso:
 
 - Tipografia serif domina o layout
 - Espaço em branco como elemento principal
 - Imagens são protagonistas, texto é coadjuvante
-- Interações em câmera lenta (transições de 700–1400ms)
+- Interações em câmera lenta (transições de 700 a 1400ms)
 - Paleta restrita: preto profundo, branco osso, um único ouro de detalhe
 
 ---
@@ -111,17 +111,17 @@ imobiliaria/
 
 ### Tipografia
 
-- **Títulos**: Playfair Display (light/regular — bold é proibido)
+- **Títulos**: Playfair Display (light/regular, bold é proibido)
 - **Texto**: Inter
 - Escala fluida no hero (clamp 2.5rem → 4rem)
 - Labels em uppercase com tracking 0.1em
 
 ### Componentes utilitários (`globals.css`)
 
-- `.btn-gold` — borda dourada, fundo transparente, inverte no hover
-- `.input-line` — apenas border-bottom, sem caixa
-- `.label-eyebrow` — labels uppercase com tracking generoso
-- `.container-luxe` — wrapper 1200px
+- `.btn-gold`: borda dourada, fundo transparente, inverte no hover
+- `.input-line`: apenas border-bottom, sem caixa
+- `.label-eyebrow`: labels uppercase com tracking generoso
+- `.container-luxe`: wrapper 1200px
 
 ---
 
@@ -131,7 +131,7 @@ imobiliaria/
 Registro e login com JWT, hash bcrypt, sessão persistida em localStorage, redirect inteligente após login.
 
 ### ✓ Catálogo de imóveis
-Listagem paginada com filtros por **cidade**, **estado**, **quartos mínimos**, **faixa de preço** e **ordenação**. Filtros vivem na URL — links são compartilháveis.
+Listagem paginada com filtros por **cidade**, **estado**, **quartos mínimos**, **faixa de preço** e **ordenação**. Os filtros vivem na URL, então os links são compartilháveis.
 
 ### ✓ Página de detalhe editorial
 Galeria com layout 8/4 columns, lightbox fullscreen com navegação por teclado (← → Esc), sidebar sticky com preço destacado.
@@ -140,10 +140,10 @@ Galeria com layout 8/4 columns, lightbox fullscreen com navegação por teclado 
 Admin envia múltiplas fotos (até 20 por requisição, 8MB cada), conversão automática para WebP com `quality: auto:good`.
 
 ### ✓ Painel de filtros não-invasivo
-Drawer lateral com backdrop blur — abre apenas quando o usuário pede, nunca polui a tela principal.
+Drawer lateral com backdrop blur, que abre apenas quando o usuário pede e nunca polui a tela principal.
 
 ### ✓ Microinterações editoriais
-Animações Framer Motion com curva `cubic-bezier(0.22, 1, 0.36, 1)` em 700–1400ms. Stagger de 50ms entre cards. Skeletons preservam o layout durante o load.
+Animações Framer Motion com curva `cubic-bezier(0.22, 1, 0.36, 1)` em 700 a 1400ms. Stagger de 50ms entre cards. Skeletons preservam o layout durante o load.
 
 ### ✓ SEO básico
 Meta tags por página + Open Graph dinâmico no detalhe do imóvel (título, descrição e imagem de capa).
@@ -206,7 +206,7 @@ Base URL: `http://localhost:4000/api`
 | `POST` | `/auth/register` | Cria usuário. Body: `{ name, email, password }` |
 | `POST` | `/auth/login` | Login. Retorna `{ user, token }` |
 
-### Properties — público
+### Properties (público)
 | Método | Rota | Descrição |
 |---|---|---|
 | `GET` | `/properties` | Lista paginada com filtros via query |
@@ -214,7 +214,7 @@ Base URL: `http://localhost:4000/api`
 
 **Query params suportados:** `city`, `state`, `bedrooms`, `priceMin`, `priceMax`, `highlight`, `sort` (`price_asc` ou `price_desc`), `page`, `limit`.
 
-### Properties — admin (requer JWT com `role: admin`)
+### Properties · admin (requer JWT com `role: admin`)
 | Método | Rota | Descrição |
 |---|---|---|
 | `POST` | `/properties` | Cria imóvel |
@@ -248,14 +248,14 @@ npm run delete-user <email>              # remove usuário do banco
 ## Roadmap
 
 ### Concluído
-- [x] **Fase 1** — Setup do monorepo, autenticação JWT, design system
-- [x] **Fase 2** — CRUD de imóveis com upload Cloudinary, seed
-- [x] **Fase 3** — UI premium (Home, Listagem, Detalhe) com filtros e galeria
+- [x] **Fase 1**: Setup do monorepo, autenticação JWT, design system
+- [x] **Fase 2**: CRUD de imóveis com upload Cloudinary, seed
+- [x] **Fase 3**: UI premium (Home, Listagem, Detalhe) com filtros e galeria
 
 ### Em andamento / próximas fases
-- [ ] **Fase 4** — Favoritos + agendamento de visitas
-- [ ] **Fase 5** — Dashboard administrativo (CRUD visual)
-- [ ] **Fase 6** — Polimento final: lazy loading otimizado, Lighthouse 90+, acessibilidade
+- [ ] **Fase 4**: Favoritos + agendamento de visitas
+- [ ] **Fase 5**: Dashboard administrativo (CRUD visual)
+- [ ] **Fase 6**: Polimento final: lazy loading otimizado, Lighthouse 90+, acessibilidade
 
 ---
 
@@ -263,4 +263,4 @@ npm run delete-user <email>              # remove usuário do banco
 
 **Mateus Fernandes** ([@mateusfsan](https://github.com/mateusfsan))
 
-Projeto pessoal de portfólio — construído com curadoria e atenção a detalhes em parceria com Claude (Anthropic).
+Projeto pessoal de portfólio, construído com curadoria e atenção a detalhes em parceria com Claude (Anthropic).

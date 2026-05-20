@@ -2,8 +2,8 @@ import { Link, NavLink, Outlet } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore.js';
 
 const items = [
-  { to: '/admin', label: 'Visao geral', end: true },
-  { to: '/admin/imoveis', label: 'Imoveis' },
+  { to: '/admin', label: 'Visão geral', end: true },
+  { to: '/admin/imoveis', label: 'Imóveis' },
   { to: '/admin/visitas', label: 'Visitas' },
 ];
 
@@ -15,7 +15,7 @@ export default function AdminLayout() {
       <aside className="w-full md:w-72 md:min-h-screen border-b md:border-b-0 md:border-r border-subtle bg-surface">
         <div className="p-8 md:p-10">
           <Link to="/" className="font-serif text-xl tracking-wide block">
-            <span className="text-ink-primary">Residencias</span>
+            <span className="text-ink-primary">Residências</span>
             <span className="text-gold">.</span>
           </Link>
           <p className="label-eyebrow text-gold mt-2">Painel admin</p>

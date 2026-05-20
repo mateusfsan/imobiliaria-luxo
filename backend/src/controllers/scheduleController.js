@@ -32,7 +32,7 @@ export async function bookedTimes(req, res, next) {
     const { propertyId, date } = req.query;
     if (!propertyId || !date) {
       return res.status(400).json({
-        error: { code: 'MISSING_PARAMS', message: 'propertyId e date sao obrigatorios' },
+        error: { code: 'MISSING_PARAMS', message: 'propertyId e date são obrigatórios' },
       });
     }
     const times = await scheduleService.getBookedTimes(propertyId, date);

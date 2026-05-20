@@ -6,7 +6,7 @@ export function errorHandler(err, req, res, next) {
     return res.status(400).json({
       error: {
         code: 'VALIDATION_ERROR',
-        message: 'Dados invalidos',
+        message: 'Dados inválidos',
         details: err.flatten().fieldErrors,
       },
     });
@@ -15,7 +15,7 @@ export function errorHandler(err, req, res, next) {
   if (err instanceof multer.MulterError) {
     const map = {
       LIMIT_FILE_SIZE: 'Arquivo excede 8MB',
-      LIMIT_FILE_COUNT: 'Maximo de 20 imagens por upload',
+      LIMIT_FILE_COUNT: 'Máximo de 20 imagens por upload',
       LIMIT_UNEXPECTED_FILE: 'Campo de arquivo inesperado',
     };
     return res.status(400).json({
@@ -28,7 +28,7 @@ export function errorHandler(err, req, res, next) {
 
   if (err.name === 'CastError') {
     return res.status(400).json({
-      error: { code: 'INVALID_ID', message: 'ID invalido' },
+      error: { code: 'INVALID_ID', message: 'ID inválido' },
     });
   }
 

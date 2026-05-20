@@ -5,7 +5,7 @@ import { HttpError } from '../middlewares/errorHandler.js';
 
 function assertValidId(id) {
   if (!mongoose.isValidObjectId(id)) {
-    throw new HttpError(400, 'INVALID_ID', 'ID invalido');
+    throw new HttpError(400, 'INVALID_ID', 'ID inválido');
   }
 }
 
@@ -13,14 +13,14 @@ export async function create(userId, { propertyId, date, notes }) {
   assertValidId(propertyId);
 
   const property = await Property.exists({ _id: propertyId });
-  if (!property) throw new HttpError(404, 'PROPERTY_NOT_FOUND', 'Imovel nao encontrado');
+  if (!property) throw new HttpError(404, 'PROPERTY_NOT_FOUND', 'Imóvel não encontrado');
 
   const when = new Date(date);
   if (Number.isNaN(when.getTime())) {
-    throw new HttpError(400, 'INVALID_DATE', 'Data invalida');
+    throw new HttpError(400, 'INVALID_DATE', 'Data inválida');
   }
   if (when.getTime() < Date.now() + 60 * 60 * 1000) {
-    throw new HttpError(400, 'DATE_TOO_SOON', 'A visita precisa ser marcada com pelo menos 1 hora de antecedencia');
+    throw new HttpError(400, 'DATE_TOO_SOON', 'A visita precisa ser marcada com pelo menos 1 hora de antecedência');
   }
 
   const existing = await Schedule.findOne({
@@ -29,7 +29,7 @@ export async function create(userId, { propertyId, date, notes }) {
     date: when,
   }).lean();
   if (existing) {
-    throw new HttpError(409, 'SLOT_TAKEN', 'Esse horario ja foi reservado por outro cliente');
+    throw new HttpError(409, 'SLOT_TAKEN', 'Esse horário já foi reservado por outro cliente');
   }
 
   return Schedule.create({
@@ -45,7 +45,7 @@ export async function getBookedTimes(propertyId, dateStr) {
 
   const date = new Date(dateStr);
   if (Number.isNaN(date.getTime())) {
-    throw new HttpError(400, 'INVALID_DATE', 'Data invalida');
+    throw new HttpError(400, 'INVALID_DATE', 'Data inválida');
   }
 
   const start = new Date(date);
@@ -91,7 +91,7 @@ export async function cancelOwn(userId, scheduleId) {
     { status: 'cancelled' },
     { new: true }
   ).populate('property', 'title city state images price');
-  if (!schedule) throw new HttpError(404, 'SCHEDULE_NOT_FOUND', 'Agendamento nao encontrado');
+  if (!schedule) throw new HttpError(404, 'SCHEDULE_NOT_FOUND', 'Agendamento não encontrado');
   return schedule;
 }
 
@@ -100,7 +100,7 @@ export async function updateStatus(scheduleId, status) {
 
   if (status === 'confirmed') {
     const current = await Schedule.findById(scheduleId).select('property date status').lean();
-    if (!current) throw new HttpError(404, 'SCHEDULE_NOT_FOUND', 'Agendamento nao encontrado');
+    if (!current) throw new HttpError(404, 'SCHEDULE_NOT_FOUND', 'Agendamento não encontrado');
 
     if (current.status !== 'confirmed') {
       const conflict = await Schedule.findOne({
@@ -113,7 +113,7 @@ export async function updateStatus(scheduleId, status) {
         throw new HttpError(
           409,
           'SLOT_TAKEN',
-          'Ja existe uma visita confirmada para este imovel neste horario'
+          'Já existe uma visita confirmada para este imóvel neste horário'
         );
       }
     }
@@ -126,6 +126,6 @@ export async function updateStatus(scheduleId, status) {
   )
     .populate('property', 'title city state price')
     .populate('user', 'name email');
-  if (!schedule) throw new HttpError(404, 'SCHEDULE_NOT_FOUND', 'Agendamento nao encontrado');
+  if (!schedule) throw new HttpError(404, 'SCHEDULE_NOT_FOUND', 'Agendamento não encontrado');
   return schedule;
 }

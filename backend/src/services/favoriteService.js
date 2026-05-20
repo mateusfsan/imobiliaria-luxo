@@ -5,7 +5,7 @@ import { HttpError } from '../middlewares/errorHandler.js';
 
 function assertValidId(id) {
   if (!mongoose.isValidObjectId(id)) {
-    throw new HttpError(400, 'INVALID_ID', 'ID invalido');
+    throw new HttpError(400, 'INVALID_ID', 'ID inválido');
   }
 }
 
@@ -13,7 +13,7 @@ export async function add(userId, propertyId) {
   assertValidId(propertyId);
 
   const property = await Property.exists({ _id: propertyId });
-  if (!property) throw new HttpError(404, 'PROPERTY_NOT_FOUND', 'Imovel nao encontrado');
+  if (!property) throw new HttpError(404, 'PROPERTY_NOT_FOUND', 'Imóvel não encontrado');
 
   await User.updateOne(
     { _id: userId },

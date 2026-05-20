@@ -12,9 +12,9 @@
 //   conflito; a UI marca os slots ja reservados como indisponiveis.
 
 export const TIME_SLOTS = [
-  { value: '09:00', period: 'Manha' },
-  { value: '10:00', period: 'Manha' },
-  { value: '11:00', period: 'Manha' },
+  { value: '09:00', period: 'Manhã' },
+  { value: '10:00', period: 'Manhã' },
+  { value: '11:00', period: 'Manhã' },
   { value: '14:00', period: 'Tarde' },
   { value: '15:00', period: 'Tarde' },
   { value: '16:00', period: 'Tarde' },
@@ -22,4 +22,4 @@ export const TIME_SLOTS = [
   { value: '18:00', period: 'Tarde' },
 ];
 
-export const PERIODS = ['Manha', 'Tarde'];
+export const PERIODS = ['Manhã', 'Tarde'];

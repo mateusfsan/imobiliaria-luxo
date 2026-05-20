@@ -13,7 +13,7 @@ function signToken(user) {
 
 export async function register({ name, email, password }) {
   const exists = await User.findOne({ email });
-  if (exists) throw new HttpError(409, 'EMAIL_IN_USE', 'E-mail ja cadastrado');
+  if (exists) throw new HttpError(409, 'EMAIL_IN_USE', 'E-mail já cadastrado');
 
   const user = await User.create({ name, email, password });
   const token = signToken(user);
@@ -22,10 +22,10 @@ export async function register({ name, email, password }) {
 
 export async function login({ email, password }) {
   const user = await User.findOne({ email }).select('+password');
-  if (!user) throw new HttpError(401, 'INVALID_CREDENTIALS', 'Credenciais invalidas');
+  if (!user) throw new HttpError(401, 'INVALID_CREDENTIALS', 'Credenciais inválidas');
 
   const ok = await user.comparePassword(password);
-  if (!ok) throw new HttpError(401, 'INVALID_CREDENTIALS', 'Credenciais invalidas');
+  if (!ok) throw new HttpError(401, 'INVALID_CREDENTIALS', 'Credenciais inválidas');
 
   const token = signToken(user);
   return { user: user.toPublic(), token };

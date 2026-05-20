@@ -5,8 +5,8 @@ import { useAuthStore } from '../../store/authStore.js';
 import { useFavoritesStore } from '../../store/favoritesStore.js';
 
 const nav = [
-  { to: '/', label: 'Inicio' },
-  { to: '/imoveis', label: 'Residencias' },
+  { to: '/', label: 'Início' },
+  { to: '/imoveis', label: 'Residências' },
   { to: '/sobre', label: 'Sobre' },
 ];
 
@@ -50,7 +50,7 @@ export default function Navbar() {
     >
       <div className="container-luxe flex items-center justify-between h-20">
         <Link to="/" className="font-serif text-xl tracking-wide">
-          <span className="text-ink-primary">Residencias</span>
+          <span className="text-ink-primary">Residências</span>
           <span className="text-gold">.</span>
         </Link>
 
@@ -109,7 +109,7 @@ export default function Navbar() {
                       onClick={() => setMenuOpen(false)}
                       className={`block px-6 py-4 text-sm uppercase tracking-wider text-ink-secondary hover:text-gold hover:bg-card transition-colors ${user.role === 'admin' ? 'border-t border-subtle' : ''}`}
                     >
-                      Minhas residencias
+                      Minhas residências
                     </Link>
                     <Link
                       to="/minhas-visitas"

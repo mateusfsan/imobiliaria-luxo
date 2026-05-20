@@ -53,12 +53,12 @@ export default function Dashboard() {
   return (
     <>
       <Helmet>
-        <title>Admin &middot; Visao geral</title>
+        <title>Admin &middot; Visão geral</title>
       </Helmet>
 
       <header className="mb-14">
         <p className="label-eyebrow text-ink-secondary mb-4">Painel</p>
-        <h1 className="font-serif text-h1">Visao geral</h1>
+        <h1 className="font-serif text-h1">Visão geral</h1>
       </header>
 
       {loading && (
@@ -72,7 +72,7 @@ export default function Dashboard() {
       {!loading && stats && (
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <StatCard
-            label="Imoveis no portfolio"
+            label="Imóveis no portfólio"
             value={stats.totalProperties}
             hint="Total cadastrado"
             to="/admin/imoveis"
@@ -88,7 +88,7 @@ export default function Dashboard() {
           <StatCard
             label="Visitas pendentes"
             value={stats.pending}
-            hint="Aguardando confirmacao"
+            hint="Aguardando confirmação"
             to="/admin/visitas"
             delay={0.16}
           />
@@ -106,7 +106,7 @@ export default function Dashboard() {
         <h2 className="font-serif text-h3 mb-6">Atalhos</h2>
         <div className="flex flex-wrap gap-4">
           <Link to="/admin/imoveis/novo" className="btn-gold">
-            Adicionar imovel
+            Adicionar imóvel
           </Link>
           <Link
             to="/admin/visitas"

@@ -12,10 +12,10 @@ import {
 import ImageUploader from '../../components/admin/ImageUploader.jsx';
 
 const schema = z.object({
-  title: z.string().min(3, 'Minimo 3 caracteres').max(160),
-  description: z.string().min(10, 'Minimo 10 caracteres'),
+  title: z.string().min(3, 'Mínimo 3 caracteres').max(160),
+  description: z.string().min(10, 'Mínimo 10 caracteres'),
   price: z.coerce.number().positive('Informe um valor positivo'),
-  city: z.string().min(2, 'Cidade obrigatoria'),
+  city: z.string().min(2, 'Cidade obrigatória'),
   state: z.string().length(2, 'UF com 2 letras'),
   bedrooms: z.coerce.number().int().min(0),
   bathrooms: z.coerce.number().int().min(0),
@@ -113,7 +113,7 @@ export default function PropertyForm() {
   if (isEdit && !property) {
     return (
       <div className="py-20 text-center">
-        <p className="text-ink-secondary mb-6">Imovel nao encontrado.</p>
+        <p className="text-ink-secondary mb-6">Imóvel não encontrado.</p>
         <Link to="/admin/imoveis" className="btn-gold">
           Voltar para a lista
         </Link>
@@ -124,7 +124,7 @@ export default function PropertyForm() {
   return (
     <>
       <Helmet>
-        <title>{isEdit ? 'Admin · Editar imovel' : 'Admin · Novo imovel'}</title>
+        <title>{isEdit ? 'Admin · Editar imóvel' : 'Admin · Novo imóvel'}</title>
       </Helmet>
 
       <header className="mb-12">
@@ -132,26 +132,26 @@ export default function PropertyForm() {
           to="/admin/imoveis"
           className="text-xs uppercase tracking-wider text-ink-secondary hover:text-gold transition-colors"
         >
-          &larr; Imoveis
+          &larr; Imóveis
         </Link>
         <p className="label-eyebrow text-ink-secondary mt-6 mb-4">
           {isEdit ? 'Editando' : 'Novo cadastro'}
         </p>
         <h1 className="font-serif text-h1">
-          {isEdit ? property.title : 'Adicionar imovel'}
+          {isEdit ? property.title : 'Adicionar imóvel'}
         </h1>
       </header>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-12 max-w-3xl">
         <section className="space-y-8">
           <div>
-            <label className="label-eyebrow block mb-3">Titulo</label>
+            <label className="label-eyebrow block mb-3">Título</label>
             <input className="input-line" {...register('title')} />
             {errors.title && <p className="mt-2 text-xs text-gold">{errors.title.message}</p>}
           </div>
 
           <div>
-            <label className="label-eyebrow block mb-3">Descricao</label>
+            <label className="label-eyebrow block mb-3">Descrição</label>
             <textarea rows="5" className="input-line resize-none" {...register('description')} />
             {errors.description && (
               <p className="mt-2 text-xs text-gold">{errors.description.message}</p>
@@ -177,12 +177,12 @@ export default function PropertyForm() {
 
           <div className="grid sm:grid-cols-2 gap-6">
             <div>
-              <label className="label-eyebrow block mb-3">Preco (R$)</label>
+              <label className="label-eyebrow block mb-3">Preço (R$)</label>
               <input type="number" min="0" className="input-line" {...register('price')} />
               {errors.price && <p className="mt-2 text-xs text-gold">{errors.price.message}</p>}
             </div>
             <div>
-              <label className="label-eyebrow block mb-3">Area (m²)</label>
+              <label className="label-eyebrow block mb-3">Área (m²)</label>
               <input type="number" min="0" className="input-line" {...register('area')} />
               {errors.area && <p className="mt-2 text-xs text-gold">{errors.area.message}</p>}
             </div>
@@ -205,7 +205,7 @@ export default function PropertyForm() {
 
           <div className="grid sm:grid-cols-2 gap-6 items-end">
             <div>
-              <label className="label-eyebrow block mb-3">Nivel de luxo (1 a 5)</label>
+              <label className="label-eyebrow block mb-3">Nível de luxo (1 a 5)</label>
               <input
                 type="number"
                 min="1"
@@ -240,7 +240,7 @@ export default function PropertyForm() {
 
         {!isEdit && (
           <p className="text-xs text-ink-secondary">
-            Apos salvar, voce podera adicionar fotos na tela de edicao.
+            Após salvar, você poderá adicionar fotos na tela de edição.
           </p>
         )}
 
@@ -250,7 +250,7 @@ export default function PropertyForm() {
 
         <div className="flex gap-4 pt-4">
           <button type="submit" disabled={isSubmitting} className="btn-gold disabled:opacity-50">
-            {isSubmitting ? 'Salvando...' : isEdit ? 'Salvar alteracoes' : 'Criar imovel'}
+            {isSubmitting ? 'Salvando...' : isEdit ? 'Salvar alterações' : 'Criar imóvel'}
           </button>
           <Link
             to="/admin/imoveis"

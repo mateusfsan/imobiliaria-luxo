@@ -77,7 +77,7 @@ export default function ImageUploader({ propertyId, images, onChange }) {
           <p className="label-eyebrow text-ink-secondary mb-2">
             {uploading ? 'Enviando...' : 'Clique para escolher fotos'}
           </p>
-          <p className="text-xs text-ink-secondary">JPG, PNG, WebP ou AVIF &middot; ate 8MB cada</p>
+          <p className="text-xs text-ink-secondary">JPG, PNG, WebP ou AVIF &middot; até 8MB cada</p>
         </button>
       ) : (
         <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">

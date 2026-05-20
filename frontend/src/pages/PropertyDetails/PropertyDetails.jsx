@@ -31,9 +31,9 @@ export default function PropertyDetails() {
   if (error || !data) {
     return (
       <div className="pt-40 container-luxe text-center min-h-[60vh]">
-        <p className="text-ink-secondary mb-6">Imovel nao encontrado.</p>
+        <p className="text-ink-secondary mb-6">Imóvel não encontrado.</p>
         <Link to="/imoveis" className="btn-gold">
-          Voltar para o portfolio
+          Voltar para o portfólio
         </Link>
       </div>
     );
@@ -42,7 +42,7 @@ export default function PropertyDetails() {
   return (
     <>
       <Helmet>
-        <title>{data.title} &middot; Residencias</title>
+        <title>{data.title} · Residências</title>
         <meta name="description" content={data.description.slice(0, 160)} />
         <meta property="og:title" content={data.title} />
         <meta property="og:description" content={data.description.slice(0, 200)} />
@@ -58,7 +58,7 @@ export default function PropertyDetails() {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="label-eyebrow text-gold mb-4"
             >
-              {data.city} &middot; {data.state}
+              {data.city} · {data.state}
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 16 }}
@@ -78,7 +78,7 @@ export default function PropertyDetails() {
 
         <section className="container-luxe py-section-sm md:py-section grid md:grid-cols-12 gap-12 md:gap-20">
           <div className="md:col-span-7">
-            <h2 className="font-serif text-h3 mb-6">Sobre a residencia</h2>
+            <h2 className="font-serif text-h3 mb-6">Sobre a residência</h2>
             <p className="text-ink-secondary leading-loose whitespace-pre-line">
               {data.description}
             </p>
@@ -92,7 +92,7 @@ export default function PropertyDetails() {
               </p>
 
               <div className="mt-10 space-y-6">
-                <InfoCell label="Area" value={formatArea(data.area)} />
+                <InfoCell label="Área" value={formatArea(data.area)} />
                 <InfoCell label="Quartos" value={data.bedrooms} />
                 <InfoCell label="Banheiros" value={data.bathrooms} />
                 <InfoCell label="Vagas" value={data.parking} />

@@ -25,7 +25,7 @@ function fmtRequestDate(date) {
   const month = String(d.getMonth() + 1).padStart(2, '0');
   const hour = String(d.getHours()).padStart(2, '0');
   const minute = String(d.getMinutes()).padStart(2, '0');
-  return `${day}/${month} as ${hour}:${minute}`;
+  return `${day}/${month} às ${hour}:${minute}`;
 }
 
 const fmtDate = new Intl.DateTimeFormat('pt-BR', {
@@ -144,7 +144,7 @@ export default function AdminSchedules() {
                     target="_blank"
                     className="font-serif text-lg hover:text-gold transition-colors block truncate"
                   >
-                    {schedule.property?.title || 'Imovel removido'}
+                    {schedule.property?.title || 'Imóvel removido'}
                   </Link>
                   <p className="mt-2 text-sm text-ink-secondary">
                     {schedule.user?.name} &middot; {schedule.user?.email}

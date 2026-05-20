@@ -12,7 +12,7 @@ import { TIME_SLOTS, PERIODS } from '../../config/scheduleSlots.js';
 
 const schema = z.object({
   date: z.string().min(1, 'Escolha uma data'),
-  time: z.string().min(1, 'Escolha um horario'),
+  time: z.string().min(1, 'Escolha um horário'),
   notes: z.string().max(500).optional(),
 });
 
@@ -87,7 +87,7 @@ export default function Schedule() {
 
   const onSubmit = async ({ date, time, notes }) => {
     if (!propertyId) {
-      setServerError('Selecione um imovel a partir do portfolio');
+      setServerError('Selecione um imóvel a partir do portfólio');
       return;
     }
     setServerError(null);
@@ -100,7 +100,7 @@ export default function Schedule() {
       });
       setSuccess(schedule);
     } catch (err) {
-      setServerError(err.response?.data?.error?.message || 'Nao foi possivel agendar');
+      setServerError(err.response?.data?.error?.message || 'Não foi possível agendar');
     }
   };
 
@@ -108,10 +108,10 @@ export default function Schedule() {
     return (
       <div className="pt-40 container-luxe text-center min-h-[60vh]">
         <p className="text-ink-secondary mb-6">
-          Escolha uma residencia no portfolio para agendar uma visita.
+          Escolha uma residência no portfólio para agendar uma visita.
         </p>
         <Link to="/imoveis" className="btn-gold">
-          Ver portfolio
+          Ver portfólio
         </Link>
       </div>
     );
@@ -132,8 +132,8 @@ export default function Schedule() {
             <p className="label-eyebrow text-gold mb-6">Pedido recebido</p>
             <h1 className="font-serif text-h2 mb-6">Visita solicitada com sucesso</h1>
             <p className="text-ink-secondary leading-relaxed mb-10">
-              Em breve nossa equipe entrara em contato para confirmar a data e os detalhes
-              da sua visita. Voce pode acompanhar o status na area "Minhas visitas".
+              Em breve nossa equipe entrará em contato para confirmar a data e os detalhes
+              da sua visita. Você pode acompanhar o status na área "Minhas visitas".
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/minhas-visitas" className="btn-gold">
@@ -143,7 +143,7 @@ export default function Schedule() {
                 onClick={() => navigate('/imoveis')}
                 className="text-sm uppercase tracking-wider text-ink-secondary hover:text-gold transition-colors px-7 py-3"
               >
-                Voltar ao portfolio
+                Voltar ao portfólio
               </button>
             </div>
           </motion.div>
@@ -210,7 +210,7 @@ export default function Schedule() {
                 return (
                   <div>
                     <div className="flex items-baseline justify-between mb-5">
-                      <label className="label-eyebrow">Horario disponivel</label>
+                      <label className="label-eyebrow">Horário disponível</label>
                       {loadingBooked && (
                         <span className="text-xs text-ink-secondary/60">verificando disponibilidade...</span>
                       )}
@@ -218,14 +218,14 @@ export default function Schedule() {
 
                     {!dateValue && (
                       <p className="text-sm text-ink-secondary mb-4">
-                        Escolha uma data acima para ver os horarios disponiveis.
+                        Escolha uma data acima para ver os horários disponíveis.
                       </p>
                     )}
 
                     {allTaken && (
                       <div className="border border-subtle px-6 py-8 text-center">
                         <p className="text-sm text-ink-primary mb-1">
-                          Todos os horarios desta data ja foram reservados.
+                          Todos os horários desta data já foram reservados.
                         </p>
                         <p className="text-xs text-ink-secondary">
                           Por favor, escolha outra data.
@@ -278,10 +278,10 @@ export default function Schedule() {
             />
 
             <div>
-              <label className="label-eyebrow block mb-3">Observacoes (opcional)</label>
+              <label className="label-eyebrow block mb-3">Observações (opcional)</label>
               <textarea
                 rows="4"
-                placeholder="Conte sobre suas preferencias, melhores horarios alternativos..."
+                placeholder="Conte sobre suas preferências, melhores horários alternativos..."
                 className="input-line resize-none"
                 {...register('notes')}
               />

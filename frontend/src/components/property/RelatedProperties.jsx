@@ -42,8 +42,8 @@ export default function RelatedProperties({ currentId }) {
   const isFiltered = mode === 'filtered';
   const showFallbackMessage = mode === 'fallback' && hadFilter;
 
-  const title = isFiltered ? 'Outras residencias como esta' : 'Voce tambem pode gostar';
-  const eyebrow = isFiltered ? 'Compativel com sua busca' : 'Curadoria';
+  const title = isFiltered ? 'Outras residências como esta' : 'Você também pode gostar';
+  const eyebrow = isFiltered ? 'Compatível com sua busca' : 'Curadoria';
 
   return (
     <section className="container-luxe pt-section-sm md:pt-section pb-section-sm md:pb-section border-t border-subtle mt-section-sm">
@@ -53,7 +53,7 @@ export default function RelatedProperties({ currentId }) {
           <h2 className="font-serif text-h2">{title}</h2>
           {showFallbackMessage && (
             <p className="mt-4 text-ink-secondary max-w-2xl">
-              Nao encontramos mais residencias com os filtros selecionados, mas estas
+              Não encontramos mais residências com os filtros selecionados, mas estas
               selecionadas podem te interessar.
             </p>
           )}
@@ -78,7 +78,7 @@ export default function RelatedProperties({ currentId }) {
               <button
                 onClick={() => setPage((p) => Math.min(pages - 1, p + 1))}
                 disabled={page === pages - 1}
-                aria-label="Proxima"
+                aria-label="Próxima"
                 className="w-10 h-10 rounded-full border border-subtle text-ink-secondary hover:border-gold hover:text-gold transition-colors duration-300 disabled:opacity-30 disabled:cursor-not-allowed grid place-items-center"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

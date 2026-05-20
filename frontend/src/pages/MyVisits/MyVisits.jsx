@@ -6,7 +6,7 @@ import { listMySchedules, cancelSchedule } from '../../services/scheduleService.
 import { formatPrice } from '../../utils/format.js';
 
 const STATUS_LABEL = {
-  pending: { label: 'Aguardando confirmacao', tone: 'text-ink-secondary' },
+  pending: { label: 'Aguardando confirmação', tone: 'text-ink-secondary' },
   confirmed: { label: 'Confirmada', tone: 'text-gold' },
   cancelled: { label: 'Cancelada', tone: 'text-ink-secondary line-through' },
 };
@@ -93,7 +93,7 @@ export default function MyVisits() {
                             {property?.city} &middot; {property?.state}
                           </p>
                           <h2 className="font-serif text-xl mb-1 truncate">
-                            {property?.title || 'Imovel removido'}
+                            {property?.title || 'Imóvel removido'}
                           </h2>
                           {property?.price && (
                             <p className="text-sm text-ink-secondary">
@@ -134,10 +134,10 @@ export default function MyVisits() {
           {!loading && items?.length === 0 && (
             <div className="py-32 text-center">
               <p className="text-ink-secondary mb-6">
-                Voce ainda nao tem visitas agendadas.
+                Você ainda não tem visitas agendadas.
               </p>
               <Link to="/imoveis" className="btn-gold">
-                Explorar portfolio
+                Explorar portfólio
               </Link>
             </div>
           )}

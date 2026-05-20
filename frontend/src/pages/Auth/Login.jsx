@@ -9,8 +9,8 @@ import { login } from '../../services/authService.js';
 import { useAuthStore } from '../../store/authStore.js';
 
 const schema = z.object({
-  email: z.string().email('E-mail invalido'),
-  password: z.string().min(1, 'Senha obrigatoria'),
+  email: z.string().email('E-mail inválido'),
+  password: z.string().min(1, 'Senha obrigatória'),
 });
 
 export default function Login() {
@@ -33,14 +33,14 @@ export default function Login() {
       setSession(user, token);
       navigate(redirectTo, { replace: true });
     } catch (err) {
-      setServerError(err.response?.data?.error?.message || 'Nao foi possivel entrar');
+      setServerError(err.response?.data?.error?.message || 'Não foi possível entrar');
     }
   };
 
   return (
     <>
       <Helmet>
-        <title>Entrar &middot; Residencias</title>
+        <title>Entrar &middot; Residências</title>
       </Helmet>
       <div className="min-h-screen flex items-center justify-center px-6">
         <motion.div
@@ -74,7 +74,7 @@ export default function Login() {
             </button>
 
             <p className="text-center text-sm text-ink-secondary">
-              Ainda nao tem conta?{' '}
+              Ainda não tem conta?{' '}
               <Link to="/cadastro" className="text-gold hover:text-gold-hover transition-colors">
                 Cadastre-se
               </Link>

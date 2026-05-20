@@ -102,7 +102,7 @@ export default function Gallery({ images = [], title }) {
                 setOpenIndex((i) => (i + 1) % images.length);
               }}
               className="absolute right-4 sm:right-10 top-1/2 -translate-y-1/2 text-ink-secondary hover:text-gold text-4xl transition-colors"
-              aria-label="Proxima"
+              aria-label="Próxima"
             >
               &rarr;
             </button>

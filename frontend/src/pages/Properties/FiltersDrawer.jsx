@@ -5,8 +5,8 @@ const STATES = ['', 'SP', 'RJ', 'BA', 'MG', 'PR', 'SC', 'RS'];
 const BEDROOMS = ['', '1', '2', '3', '4', '5'];
 const SORTS = [
   { value: '', label: 'Mais recentes' },
-  { value: 'price_asc', label: 'Menor preco' },
-  { value: 'price_desc', label: 'Maior preco' },
+  { value: 'price_asc', label: 'Menor preço' },
+  { value: 'price_desc', label: 'Maior preço' },
 ];
 
 export default function FiltersDrawer({ open, onClose, value, onChange, onReset }) {
@@ -62,7 +62,7 @@ export default function FiltersDrawer({ open, onClose, value, onChange, onReset 
                   <label className="label-eyebrow block mb-3">Cidade</label>
                   <input
                     type="text"
-                    placeholder="Ex: Sao Paulo"
+                    placeholder="Ex: São Paulo"
                     value={local.city || ''}
                     onChange={(e) => update({ city: e.target.value })}
                     className="input-line"
@@ -85,7 +85,7 @@ export default function FiltersDrawer({ open, onClose, value, onChange, onReset 
                 </div>
 
                 <div>
-                  <label className="label-eyebrow block mb-3">Quartos (minimo)</label>
+                  <label className="label-eyebrow block mb-3">Quartos (mínimo)</label>
                   <div className="flex flex-wrap gap-2">
                     {BEDROOMS.map((b) => (
                       <button
@@ -106,7 +106,7 @@ export default function FiltersDrawer({ open, onClose, value, onChange, onReset 
 
                 <div className="grid grid-cols-2 gap-5">
                   <div>
-                    <label className="label-eyebrow block mb-3">Preco minimo (R$)</label>
+                    <label className="label-eyebrow block mb-3">Preço mínimo (R$)</label>
                     <input
                       type="number"
                       inputMode="numeric"
@@ -117,7 +117,7 @@ export default function FiltersDrawer({ open, onClose, value, onChange, onReset 
                     />
                   </div>
                   <div>
-                    <label className="label-eyebrow block mb-3">Preco maximo (R$)</label>
+                    <label className="label-eyebrow block mb-3">Preço máximo (R$)</label>
                     <input
                       type="number"
                       inputMode="numeric"

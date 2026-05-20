@@ -34,7 +34,7 @@ export async function list(query = {}) {
 
 export async function getById(id) {
   const property = await Property.findById(id).lean();
-  if (!property) throw new HttpError(404, 'PROPERTY_NOT_FOUND', 'Imovel nao encontrado');
+  if (!property) throw new HttpError(404, 'PROPERTY_NOT_FOUND', 'Imóvel não encontrado');
   return property;
 }
 
@@ -44,13 +44,13 @@ export async function create(data) {
 
 export async function update(id, data) {
   const property = await Property.findByIdAndUpdate(id, data, { new: true, runValidators: true });
-  if (!property) throw new HttpError(404, 'PROPERTY_NOT_FOUND', 'Imovel nao encontrado');
+  if (!property) throw new HttpError(404, 'PROPERTY_NOT_FOUND', 'Imóvel não encontrado');
   return property;
 }
 
 export async function remove(id) {
   const property = await Property.findById(id);
-  if (!property) throw new HttpError(404, 'PROPERTY_NOT_FOUND', 'Imovel nao encontrado');
+  if (!property) throw new HttpError(404, 'PROPERTY_NOT_FOUND', 'Imóvel não encontrado');
 
   await Promise.all(property.images.map((img) => destroyImage(img.publicId)));
   await property.deleteOne();
@@ -62,7 +62,7 @@ export async function addImages(id, files) {
   }
 
   const property = await Property.findById(id);
-  if (!property) throw new HttpError(404, 'PROPERTY_NOT_FOUND', 'Imovel nao encontrado');
+  if (!property) throw new HttpError(404, 'PROPERTY_NOT_FOUND', 'Imóvel não encontrado');
 
   const uploaded = await Promise.all(files.map((f) => uploadBuffer(f.buffer)));
   property.images.push(...uploaded);
@@ -72,12 +72,12 @@ export async function addImages(id, files) {
 
 export async function removeImage(id, publicId) {
   const property = await Property.findById(id);
-  if (!property) throw new HttpError(404, 'PROPERTY_NOT_FOUND', 'Imovel nao encontrado');
+  if (!property) throw new HttpError(404, 'PROPERTY_NOT_FOUND', 'Imóvel não encontrado');
 
   const before = property.images.length;
   property.images = property.images.filter((img) => img.publicId !== publicId);
   if (property.images.length === before) {
-    throw new HttpError(404, 'IMAGE_NOT_FOUND', 'Imagem nao encontrada');
+    throw new HttpError(404, 'IMAGE_NOT_FOUND', 'Imagem não encontrada');
   }
 
   await destroyImage(publicId);

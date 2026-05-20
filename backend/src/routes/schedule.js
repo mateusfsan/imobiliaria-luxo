@@ -5,8 +5,8 @@ import { requireAuth, requireAdmin } from '../middlewares/auth.js';
 import * as scheduleController from '../controllers/scheduleController.js';
 
 const createSchema = z.object({
-  propertyId: z.string().min(1, 'Imovel obrigatorio'),
-  date: z.string().min(1, 'Data obrigatoria'),
+  propertyId: z.string().min(1, 'Imóvel obrigatório'),
+  date: z.string().min(1, 'Data obrigatória'),
   notes: z.string().max(500).optional(),
 });
 

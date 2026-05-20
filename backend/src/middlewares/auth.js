@@ -6,14 +6,14 @@ export function requireAuth(req, res, next) {
   try {
     const header = req.headers.authorization || '';
     const token = header.startsWith('Bearer ') ? header.slice(7) : null;
-    if (!token) throw new HttpError(401, 'NO_TOKEN', 'Token nao fornecido');
+    if (!token) throw new HttpError(401, 'NO_TOKEN', 'Token não fornecido');
 
     const payload = jwt.verify(token, env.jwtSecret);
     req.user = { id: payload.sub, role: payload.role };
     next();
   } catch (err) {
     if (err.name === 'JsonWebTokenError' || err.name === 'TokenExpiredError') {
-      return next(new HttpError(401, 'INVALID_TOKEN', 'Token invalido ou expirado'));
+      return next(new HttpError(401, 'INVALID_TOKEN', 'Token inválido ou expirado'));
     }
     next(err);
   }
