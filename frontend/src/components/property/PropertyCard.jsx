@@ -34,19 +34,23 @@ export default function PropertyCard({ property, index = 0 }) {
           )}
 
           <div
-            className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-90 transition-opacity duration-700 ease-silk group-hover:opacity-100"
+            className="absolute inset-0 transition-opacity duration-700 ease-silk opacity-95 group-hover:opacity-100"
+            style={{
+              background:
+                'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 28%, rgba(0,0,0,0.15) 58%, transparent 80%)',
+            }}
             aria-hidden
           />
 
           {property.highlight && (
-            <span className="absolute top-5 left-5 label-eyebrow text-gold">
+            <span className="absolute top-5 left-5 label-eyebrow text-gold [text-shadow:_0_1px_8px_rgba(0,0,0,0.7)]">
               Destaque
             </span>
           )}
 
-          <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-            <p className="label-eyebrow text-ink-secondary mb-2">
-              {property.city} &middot; {property.state}
+          <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 [text-shadow:_0_1px_10px_rgba(0,0,0,0.55)]">
+            <p className="label-eyebrow text-white/75 mb-2">
+              {property.city} · {property.state}
             </p>
             <h3 className="font-serif text-2xl sm:text-3xl text-ink-primary leading-tight">
               {property.title}
