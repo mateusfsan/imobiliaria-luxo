@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Residencias Extraordinarias</title>
-        <meta name="description" content="Curadoria de residencias de alto padrao no Brasil." />
+        <title>Residências Extraordinárias</title>
+        <meta name="description" content="Curadoria de residências de alto padrão no Brasil." />
       </Helmet>
 
       <section className="relative h-screen w-full overflow-hidden">
@@ -40,7 +40,7 @@ export default function Home() {
             transition={{ duration: 1.1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="font-serif text-display max-w-3xl text-ink-primary"
           >
-            Descubra residencias extraordinarias
+            Descubra residências extraordinárias
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -48,7 +48,7 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.35 }}
             className="mt-6 max-w-xl text-ink-secondary"
           >
-            Selecionamos imoveis singulares para quem busca discricao, sofisticacao e arquitetura autoral.
+            Selecionamos imóveis singulares para quem busca discrição, sofisticação e arquitetura autoral.
           </motion.p>
 
           <motion.div
@@ -58,7 +58,7 @@ export default function Home() {
             className="mt-12"
           >
             <Link to="/imoveis" className="btn-gold">
-              Explorar residencias
+              Explorar residências
             </Link>
           </motion.div>
         </div>
@@ -67,9 +67,9 @@ export default function Home() {
       <section className="container-luxe py-section-sm md:py-section">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <div>
-            <p className="label-eyebrow mb-4">Selecao do mes</p>
+            <p className="label-eyebrow mb-4">Seleção do mês</p>
             <h2 className="font-serif text-h2 max-w-2xl">
-              Residencias em destaque
+              Residências em destaque
             </h2>
           </div>
           <Link
@@ -98,31 +98,81 @@ export default function Home() {
 
         {!loading && data?.items?.length === 0 && (
           <p className="text-ink-secondary text-center py-12">
-            Nenhuma residencia em destaque no momento.
+            Nenhuma residência em destaque no momento.
           </p>
         )}
       </section>
 
       <section className="border-t border-subtle">
+        <div className="container-luxe py-section-sm md:py-section">
+          <div className="mb-16 md:mb-20 max-w-2xl">
+            <p className="label-eyebrow mb-4">Atendimento</p>
+            <h2 className="font-serif text-h2 leading-tight">
+              Uma experiência sob medida do primeiro contato ao pós-venda.
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-12 md:gap-16">
+            {[
+              {
+                number: '01',
+                title: 'Curadoria',
+                description:
+                  'Selecionamos cada residência manualmente, com critérios rigorosos de arquitetura, localização e história. Você não navega: você descobre.',
+              },
+              {
+                number: '02',
+                title: 'Atendimento reservado',
+                description:
+                  'Visitas exclusivamente com hora marcada e um curador dedicado a entender o seu repertório e suas preferências.',
+              },
+              {
+                number: '03',
+                title: 'Discrição absoluta',
+                description:
+                  'Sigilo total sobre o cliente e o imóvel, do primeiro contato à entrega das chaves. Sua privacidade é parte do serviço.',
+              },
+            ].map((step, i) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.9, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <p className="font-serif text-6xl md:text-7xl font-light text-gold mb-6 leading-none">
+                  {step.number}
+                </p>
+                <h3 className="font-serif text-2xl mb-4">{step.title}</h3>
+                <p className="text-ink-secondary leading-relaxed">
+                  {step.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-subtle">
         <div className="container-luxe py-section grid md:grid-cols-2 gap-12 md:gap-20 items-center">
           <div>
-            <p className="label-eyebrow mb-4">Sobre nos</p>
+            <p className="label-eyebrow mb-4">Sobre nós</p>
             <h2 className="font-serif text-h2 leading-tight">
-              Imoveis singulares para historias singulares.
+              Imóveis singulares para histórias singulares.
             </h2>
           </div>
           <div className="space-y-6 text-ink-secondary leading-relaxed">
             <p>
-              Trabalhamos com curadoria silenciosa. Cada residencia em nosso portfolio passa por
-              uma analise criteriosa de arquitetura, localizacao, acabamentos e historia.
+              Trabalhamos com curadoria silenciosa. Cada residência em nosso portfólio passa por
+              uma análise criteriosa de arquitetura, localização, acabamentos e história.
             </p>
             <p>
-              Atendemos exclusivamente com hora marcada. A discricao do cliente e do imovel
-              e o nosso compromisso.
+              Atendemos exclusivamente com hora marcada. A discrição do cliente e do imóvel
+              é o nosso compromisso.
             </p>
             <div className="pt-4">
               <Link to="/imoveis" className="btn-gold">
-                Conhecer o portfolio
+                Conhecer o portfólio
               </Link>
             </div>
           </div>
