@@ -7,6 +7,7 @@ import AdminLayout from './components/admin/AdminLayout.jsx';
 import Home from './pages/Home/Home.jsx';
 import Properties from './pages/Properties/Properties.jsx';
 import PropertyDetails from './pages/PropertyDetails/PropertyDetails.jsx';
+import About from './pages/About/About.jsx';
 import Favorites from './pages/Favorites/Favorites.jsx';
 import Schedule from './pages/Schedule/Schedule.jsx';
 import MyVisits from './pages/MyVisits/MyVisits.jsx';
@@ -34,6 +35,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/imoveis" element={<Properties />} />
           <Route path="/imoveis/:id" element={<PropertyDetails />} />
+          <Route path="/sobre" element={<About />} />
           <Route path="/entrar" element={<Login />} />
           <Route path="/cadastro" element={<Register />} />
 
@@ -81,7 +83,7 @@ export default function App() {
             path="*"
             element={
               <div className="min-h-[60vh] flex items-center justify-center text-ink-secondary">
-                Pagina nao encontrada.
+                Página não encontrada.
               </div>
             }
           />
